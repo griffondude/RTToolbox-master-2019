@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Commented out for troubleshooting
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_item_height">
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/NPSSize"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="0.5"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@android:color/black"
+            tools:text="NPS "
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:id="@+id/ODImp"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="0.5"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@android:color/black"
+            android:layout_below="@+id/NPSSize"
+            tools:text="OD: "
+            android:paddingLeft="16dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Line2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line1">
+        <TextView
+            android:id="@+id/DNSize"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="0.5"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@android:color/black"
+            android:layout_toEndOf="@+id/NPSSize"
+            tools:text="DN "
+            android:paddingLeft="16dp"
+            />
+
+         <TextView
+            android:id="@+id/ODMet"
+             android:layout_width="0dp"
+             android:layout_height="44dp"
+             android:layout_weight="0.5"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@android:color/black"
+             android:layout_toEndOf="@+id/DNSize"
+             android:layout_below="@id/ODImp"
+            tools:text="OD: "
+             android:paddingLeft="16dp"
+            />
+    </LinearLayout>
+
+
+
+</RelativeLayout>
+    -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/NPSSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:textAppearance="?attr/textAppearanceListItem" />
+
+    <TextView
+        android:id="@+id/ODImp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:textAppearance="?attr/textAppearanceListItem" />
+</LinearLayout>
