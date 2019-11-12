@@ -1,0 +1,24 @@
+package com.example.root.rttoolbox;
+
+import android.app.Application;
+import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.LiveData;
+import android.support.annotation.NonNull;
+
+import java.nio.channels.Pipe;
+import java.util.List;
+
+public class PipeViewModel extends AndroidViewModel {
+    private PipeRepository mPipeRepository;
+    private LiveData<List<PipeSizeEntity>> mAllPipes;
+
+    public PipeViewModel(@NonNull Application application) {
+        super(application);
+        mPipeRepository = new PipeRepository(application);
+        mAllPipes = mPipeRepository.getAllPipes();
+    }
+
+    LiveData<List<PipeSizeEntity>> getmAllPipes() {return mAllPipes;}
+
+    public void insert(PipeSizeEntity pipe) {mPipeRepository.insert(pipe);}
+}
