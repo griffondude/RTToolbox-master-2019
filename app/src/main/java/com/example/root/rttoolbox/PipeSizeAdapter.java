@@ -1,6 +1,7 @@
 package com.example.root.rttoolbox;
 
 import android.app.Activity;
+import android.arch.lifecycle.LiveData;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +33,9 @@ public class PipeSizeAdapter extends RecyclerView.Adapter<PipeSizeAdapter.PipeVi
     private final LayoutInflater mInflater;
     private List<PipeSizeEntity> mPipe;
 
-    PipeSizeAdapter(Context context) { mInflater = LayoutInflater.from(context); }
+    PipeSizeAdapter(Context context) {
+        mInflater = LayoutInflater.from(context);
+    }
 
     @Override
     public PipeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -41,11 +45,13 @@ public class PipeSizeAdapter extends RecyclerView.Adapter<PipeSizeAdapter.PipeVi
 
     @Override
     public void onBindViewHolder(PipeViewHolder holder, int position) {
+        Log.d("recycler","HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELP");
+
         if (mPipe != null) {
             PipeSizeEntity current = mPipe.get(position);
-            //holder.pipeItemView.setText(current.getMNPSPipeSize());
+            holder.pipeItemView.setText(current.getMNPSPipeSize());
             // TODO: Rebind to database.
-            holder.pipeItemView.setText("TEST");
+            //holder.pipeItemView.setText("TEST");
         } else {
             // Covers the case of data not being ready yet.
             holder.pipeItemView.setText("No Word");

@@ -19,6 +19,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 public class PipeDimentionsGateway extends AppCompatActivity {
 
@@ -45,8 +48,11 @@ public class PipeDimentionsGateway extends AppCompatActivity {
         RecyclerView recyclerView;
         recyclerView = findViewById(R.id.pipe_list);
         final PipeSizeAdapter adapter = new PipeSizeAdapter(this);
+
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        mPipeViewModel.getmAllPipes().observe(this,pipes->adapter.setmPipes((pipes)));
     }
 
     //@Override
