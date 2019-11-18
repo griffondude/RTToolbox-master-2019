@@ -19,7 +19,7 @@ public interface PipeDao {
     @Query("DELETE FROM pipe_table")
     void deleteAll();
 
-    @Query("SELECT * from pipe_table ORDER BY mNPSPipeSize ASC")
+    @Query("SELECT * from pipe_table ORDER BY mSizeCategory ASC")
     LiveData<List<PipeSizeEntity>> getAllPipeSizes();
 
     //TODO: Fix this onconflict strategy thing below. Returns error.

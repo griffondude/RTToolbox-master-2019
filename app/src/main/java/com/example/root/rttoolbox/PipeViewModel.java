@@ -18,12 +18,8 @@ public class PipeViewModel extends AndroidViewModel {
         mPipeRepository = new PipeRepository(application);
         mAllPipes = mPipeRepository.getAllPipes();
         PipeRoomDatabase db = PipeRoomDatabase.getDatabase(application);
-        pipeDao = db.pipeDao();/*
-        mPipe = querier.getAllPipeSizes();
-        setmPipes(querier.getAllPipeSizes());*/
+        pipeDao = db.pipeDao();
     }
 
     LiveData<List<PipeSizeEntity>> getmAllPipes() {return pipeDao.getAllPipeSizes();}
-
-    //public void insert(PipeSizeEntity pipe) {mPipeRepository.insert(pipe);}
 }

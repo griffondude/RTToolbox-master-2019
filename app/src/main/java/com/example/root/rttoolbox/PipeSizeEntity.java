@@ -317,7 +317,7 @@ public class PipeSizeEntity {
         this.mDNPipeSize = mDNPipeSize;
         this.mOutsideDiameterImp = mOutsideDiameterImp;
         this.mOutsideDiameterMet = mOutsideDiameterMet;
-        this.mSizeCategory = mSizeCategory;
+        //this.mSizeCategory = mSizeCategory;
         this.msched5i = msched5i;
         this.msched5m = msched5m;
         this.msched10i = msched10i;

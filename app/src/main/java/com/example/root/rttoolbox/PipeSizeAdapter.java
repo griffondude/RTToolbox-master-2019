@@ -3,6 +3,7 @@ package com.example.root.rttoolbox;
 import android.app.Activity;
 import android.arch.lifecycle.LiveData;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,10 +24,12 @@ public class PipeSizeAdapter extends RecyclerView.Adapter<PipeSizeAdapter.PipeVi
 
     public class PipeViewHolder extends RecyclerView.ViewHolder {
         private final TextView pipeItemView;
+        private final TextView pipeItemView2;
 
         private PipeViewHolder(View itemView) {
             super(itemView);
             pipeItemView = itemView.findViewById(R.id.textView);
+            pipeItemView2 = itemView.findViewById(R.id.textView2);
         }
     }
 
@@ -45,17 +48,27 @@ public class PipeSizeAdapter extends RecyclerView.Adapter<PipeSizeAdapter.PipeVi
 
     @Override
     public void onBindViewHolder(PipeViewHolder holder, int position) {
-        Log.d("recycler","HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELP");
 
         if (mPipe != null) {
             PipeSizeEntity current = mPipe.get(position);
             holder.pipeItemView.setText(current.getMNPSPipeSize());
-            // TODO: Rebind to database.
-            //holder.pipeItemView.setText("TEST");
+            holder.pipeItemView2.setText(current.getMDNPipeSize());
         } else {
             // Covers the case of data not being ready yet.
             holder.pipeItemView.setText("No Word");
         }
+
+        //Added based on https://stackoverflow.com/questions/28767413/how-to-open-a-different-activity-on-recyclerview-item-onclick
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), displaySchedTable.class);
+                PipeSizeEntity current = mPipe.get(position);
+                //TODO: trying to pass data.  Not working.
+                //intent.putExtra("NPSchosen", current.getMNPSPipeSize());
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     void setmPipes(List<PipeSizeEntity> pipes){

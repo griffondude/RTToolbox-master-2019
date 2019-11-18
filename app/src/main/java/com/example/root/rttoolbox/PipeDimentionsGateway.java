@@ -26,7 +26,6 @@ import java.util.Observer;
 public class PipeDimentionsGateway extends AppCompatActivity {
 
     private PipeViewModel mPipeViewModel;
-    // private int sizeCat = 0;
 
 // Based on the Miwok App model
 
@@ -41,8 +40,6 @@ public class PipeDimentionsGateway extends AppCompatActivity {
 
         //TODO: Verify accuracy of this table. Source: https://en.wikipedia.org/wiki/Nominal_Pipe_Size
 
-        //TODO: Convert array list to database.
-
         //TODO: Use fragment to create schedule table.
 
         RecyclerView recyclerView;
@@ -54,80 +51,4 @@ public class PipeDimentionsGateway extends AppCompatActivity {
 
         mPipeViewModel.getmAllPipes().observe(this,pipes->adapter.setmPipes((pipes)));
     }
-
-    //@Override
-    //public int getItemCount() {
-    //    return mValues.size();
-    //}
-
-    class ViewHolder extends RecyclerView.ViewHolder {
-        final TextView mNPSSize;
-        final TextView mODImp;
-
-        ViewHolder(View view) {
-            super(view);
-            mNPSSize = (TextView) view.findViewById(R.id.NPSSize);
-            mODImp = (TextView) view.findViewById(R.id.ODImp);
-        }
-    }
-
-    /*// Placeholder code for testing.
-    private void showSchedTable(int sizeCat) {
-        //convert sizeCat to string for troubleshooting.
-        String sizeCatStr = Integer.toString(sizeCat);
-        // Select proper schedules data table to display
-        switch (sizeCat) {
-            case 1:
-                //Intent myIntent;
-                //myIntent = new Intent(this,  EMERG.class);
-                //startActivity(myIntent);
-                Toast toast1 = Toast.makeText(getApplicationContext(), "Size Category is: "+sizeCatStr, Toast.LENGTH_LONG);
-                toast1.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-                toast1.show();
-                break;
-
-            case 2:
-                //Intent myIntent2 = new Intent(this, EMERG.class);
-                //startActivity(myIntent2);
-                //break;
-                Toast toast2 = Toast.makeText(getApplicationContext(), "Size Category is: "+sizeCatStr, Toast.LENGTH_LONG);
-                toast2.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-                toast2.show();
-                break;
-
-            case 3:
-                //Intent myIntent3 = new Intent(this, EMERG.class);
-                //startActivity(myIntent3);
-                //break;
-                Toast toast3 = Toast.makeText(getApplicationContext(), "Size Category is: "+sizeCatStr, Toast.LENGTH_LONG);
-                toast3.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-                toast3.show();
-                break;
-
-            case 4:
-                //Intent myIntent3 = new Intent(this, EMERG.class);
-                //startActivity(myIntent3);
-                //break;
-                Toast toast4 = Toast.makeText(getApplicationContext(), "Size Category is: "+sizeCatStr, Toast.LENGTH_LONG);
-                toast4.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-                toast4.show();
-                break;
-
-            case 5:
-                //Intent myIntent3 = new Intent(this, EMERG.class);
-                //startActivity(myIntent3);
-                //break;
-                Toast toast5 = Toast.makeText(getApplicationContext(), "Size Category is: "+sizeCatStr, Toast.LENGTH_LONG);
-                toast5.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-                toast5.show();
-                break;
-
-            default:
-                Toast toast6 = Toast.makeText(getApplicationContext(), "Size Category Out Of Range", Toast.LENGTH_LONG);
-                toast6.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-                toast6.show();
-        }
-    }*/
-
-
 }
