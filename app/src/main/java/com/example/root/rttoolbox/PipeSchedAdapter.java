@@ -1,91 +1,57 @@
 package com.example.root.rttoolbox;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // Based on the PipeSizeAdapter,which is based on the Miwok App model
 // Used to build each item in the list of pipe schedules.
-public class PipeSchedAdapter extends RecyclerView.Adapter<com.example.root.rttoolbox.PipeSchedAdapter.SchedViewHolder> {
+public class PipeSchedAdapter extends ArrayAdapter<String> {
+    //private final Activity activity;
+    private final Context context;
+    private List<PipeSizeEntity> PipeDataList;
+    private final ArrayList values1;
+    private final ArrayList values2;
+    private final ArrayList values3;
 
-    public class SchedViewHolder extends RecyclerView.ViewHolder {
-        private final TextView pipeItemView3;
-        private final TextView pipeItemView4;
-        private final TextView pipeItemView5;
-
-        private SchedViewHolder(View itemView) {
-            super(itemView);
-            pipeItemView3 = itemView.findViewById(R.id.textView3);
-            pipeItemView4 = itemView.findViewById(R.id.textView4);
-            pipeItemView5 = itemView.findViewById(R.id.textView5);
-        }
+    public PipeSchedAdapter(Context context, ArrayList values1, ArrayList values2, ArrayList values3) {
+        super(context, R.layout.sched_view_item);
+        this.context = context;
+        this.values1 = values1;
+        this.values2 = values2;
+        this.values3 = values3;
     }
 
-    private final LayoutInflater mInflater;
-    private List<PipeSizeEntity> mPipe;
+    public View getView(int position, View view, ViewGroup parent) {
+        LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View rowView = inflater.inflate(R.layout.sched_view_item,parent, false);
+        //this code gets references to objects in the layout file
+        TextView schedid = (TextView) rowView.findViewById(R.id.textView3);
+        TextView WTi = (TextView) rowView.findViewById(R.id.textView4);
+        TextView WTm = (TextView) rowView.findViewById(R.id.textView5);
 
-    PipeSchedAdapter(Context context) {
-        mInflater = LayoutInflater.from(context);
+        //this code sets the values of the objects to values from the arrays
+
+            /*schedid.setText(scheduleIdList[position]);
+            WTi.setText(placeHolderWTi[position]);
+            WTm.setText(placeHolderWTm[position]);
+*/
+
+        return rowView;
     }
 
-    @Override
-    public SchedViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        View itemView = mInflater.inflate(R.layout.sched_view_item, parent, false);
-        return new SchedViewHolder(itemView);
-        //TODO: Atempting to retrieve variable from other activity. Not working.
-        /*Intent intent = intent.getCharArrayExtra("NPSchosen");
-        String id = intent.getStringExtra("NPSchosen");
-        Bundle extras = getExtras();
-        Toast toast = Toast.makeText(getApplicationContext(),
-                "This is a message displayed in a Toast",
-                Toast.LENGTH_SHORT);
-        toast.show();*/
-    }
-
-    @Override
-    public void onBindViewHolder(com.example.root.rttoolbox.PipeSchedAdapter.SchedViewHolder holder, int position) {
-
-        if (mPipe != null) {
-            PipeSizeEntity current = mPipe.get(position);
-            holder.pipeItemView3.setText(current.getMsched20i());
-            holder.pipeItemView4.setText(current.getMsched20m());
-            holder.pipeItemView5.setText(current.getMOutsideDiameterImp());
-        } else {
-            // Covers the case of data not being ready yet.
-            holder.pipeItemView3.setText("No Word");
-        }
-
-        //Added based on https://stackoverflow.com/questions/28767413/how-to-open-a-different-activity-on-recyclerview-item-onclick
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                //Intent intent = new Intent(view.getContext(), displaySchedTable.class);
-                //view.getContext().startActivity(intent);
-            }
-        });
-    }
-
-    void setmPipes(List<PipeSizeEntity> pipes){
-        mPipe = pipes;
+    void setmPipes (List < PipeSizeEntity > pipes) {
+        PipeDataList = pipes;
         notifyDataSetChanged();
-    }
-
-    // getItemCount() is called many times, and when it is first called,
-    // mWords has not been updated (means initially, it's null, and we can't return null).
-    @Override
-    public int getItemCount() {
-        if (mPipe != null)
-            return mPipe.size();
-        else return 0;
     }
 }
 

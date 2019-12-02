@@ -9,14 +9,22 @@
         style="@style/pipe_title"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_weight="0.5"
+        android:layout_weight="0.33"
         android:background="@android:color/holo_orange_light" />
     <TextView
         android:id="@+id/textView2"
         style="@style/pipe_title"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_orange_light"
-        android:layout_weight="0.5"
+        android:layout_weight="0.33"
+        android:layout_gravity="center"
+        />
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/pipe_title"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_orange_light"
+        android:layout_weight="0.33"
         android:layout_gravity="center"
         />
 </LinearLayout>

@@ -63,9 +63,8 @@ public class PipeSizeAdapter extends RecyclerView.Adapter<PipeSizeAdapter.PipeVi
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), displaySchedTable.class);
-                PipeSizeEntity current = mPipe.get(position);
-                //TODO: trying to pass data.  Not working.
-                //intent.putExtra("NPSchosen", current.getMNPSPipeSize());
+                String current = mPipe.get(position).toString();
+                intent.putExtra("NPSchosen",current);
                 view.getContext().startActivity(intent);
             }
         });
