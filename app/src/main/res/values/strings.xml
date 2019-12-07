@@ -297,6 +297,7 @@
     <string name="action_settings">Settings</string>
     <string name="PipeDimensionsGateway_Title">List Of Pipe Sizes</string>
     <string name="title_activity_display_sched_table">displaySchedTable</string>
+    <string name="title_activity_sched_table_exp">schedTableExp</string>
 
 
 </resources>

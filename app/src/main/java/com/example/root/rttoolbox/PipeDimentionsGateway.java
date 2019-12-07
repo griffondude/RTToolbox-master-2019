@@ -51,4 +51,13 @@ public class PipeDimentionsGateway extends AppCompatActivity {
 
         mPipeViewModel.getmAllPipes().observe(this,pipes->adapter.setmPipes((pipes)));
     }
+
+    public void startSchedTableExp(View view) {
+
+        Intent myIntent = new Intent(this, schedTableExp.class);
+
+        startActivity(myIntent);
+    }
+
+
 }
