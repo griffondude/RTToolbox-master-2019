@@ -1,5 +1,6 @@
 package com.example.root.rttoolbox;
 
+import android.app.ListActivity;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
@@ -58,11 +59,6 @@ public class displaySchedTable extends AppCompatActivity {
         for (int i = 0; i < scheduleIdList.length; ++i) {
             list3.add(placeHolderWTm[i]);
         }
-
-
-        mPipeViewModel = ViewModelProviders.of(this).get(PipeViewModel.class);
-
-
         //Retrieve pipe size chosen from previous activity.
         Intent intent = getIntent();
         String id = getIntent().getStringExtra("NPSchosen");
@@ -78,10 +74,11 @@ public class displaySchedTable extends AppCompatActivity {
         //Testing code is an exact copy of PipeDImensionsGateway code.
         mPipeViewModel = ViewModelProviders.of(this).get(PipeViewModel.class);
         ListView listView;
+        //experimental code
         listView = findViewById(R.id.sched_list);
-        PipeSchedAdapter adapter = new PipeSchedAdapter(this, list1, list2, list3);
+        PipeSchedAdapter adapter = new PipeSchedAdapter(this, scheduleIdList, placeHolderWTi, placeHolderWTm);
         listView.setAdapter(adapter);
-        mPipeViewModel.getmAllPipes().observe(this,pipes->adapter.setmPipes((pipes)));
+        // mPipeViewModel.getmAllPipes().observe(this,pipes->adapter.setmPipes((pipes)));
 
         //Button not used yet.
         FloatingActionButton fab = findViewById(R.id.fab);

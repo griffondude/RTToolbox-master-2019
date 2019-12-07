@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,11 +20,11 @@ public class PipeSchedAdapter extends ArrayAdapter<String> {
     //private final Activity activity;
     private final Context context;
     private List<PipeSizeEntity> PipeDataList;
-    private final ArrayList values1;
-    private final ArrayList values2;
-    private final ArrayList values3;
+    private String[] values1;
+    private String[] values2;
+    private String[] values3;
 
-    public PipeSchedAdapter(Context context, ArrayList values1, ArrayList values2, ArrayList values3) {
+    public PipeSchedAdapter(Context context, String[] values1, String[] values2, String[] values3) {
         super(context, R.layout.sched_view_item);
         this.context = context;
         this.values1 = values1;
@@ -33,7 +34,7 @@ public class PipeSchedAdapter extends ArrayAdapter<String> {
 
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.sched_view_item,parent, false);
+        View rowView = inflater.inflate(R.layout.sched_view_item,parent, true);
         //this code gets references to objects in the layout file
         TextView schedid = (TextView) rowView.findViewById(R.id.textView3);
         TextView WTi = (TextView) rowView.findViewById(R.id.textView4);
@@ -41,10 +42,9 @@ public class PipeSchedAdapter extends ArrayAdapter<String> {
 
         //this code sets the values of the objects to values from the arrays
 
-            /*schedid.setText(scheduleIdList[position]);
-            WTi.setText(placeHolderWTi[position]);
-            WTm.setText(placeHolderWTm[position]);
-*/
+            schedid.setText(values1[position]);
+            WTi.setText(values2[position]);
+            WTm.setText(values3[position]);
 
         return rowView;
     }
