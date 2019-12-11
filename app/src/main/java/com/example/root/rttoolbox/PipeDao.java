@@ -26,8 +26,8 @@ public interface PipeDao {
 
     //TODO: Finish building QUERY to add all pipe schedules.
     @SuppressWarnings(RoomWarnings.CURSOR_MISMATCH)
-    @Query("SELECT * from pipe_table WHERE mNPSPipeSize LIKE :searchparam")
-    LiveData<List<PipeSizeEntity>> getPipeSched(String searchparam);
+    @Query("SELECT * from pipe_table WHERE mNPSPipeSize = :searchparam LIMIT 1")
+    PipeSizeEntity getPipeSched(String searchparam);
 
     //TODO: Fix this onconflict strategy thing below. Returns error.
     // @Insert(onConflict = OnConflictStrategy.REPLACE);

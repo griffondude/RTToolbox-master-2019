@@ -1,22 +1,15 @@
 package com.example.root.rttoolbox;
 
-import android.app.Activity;
-import android.arch.lifecycle.LiveData;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+
 import android.widget.TextView;
-import android.util.Log;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static android.provider.Settings.System.getString;
-
 
 // Based on the Miwok App model
 // Used to build each item in the list of pipesizes.
@@ -47,7 +40,7 @@ public class PipeSizeAdapter extends RecyclerView.Adapter<PipeSizeAdapter.PipeVi
     }
 
     @Override
-    public void onBindViewHolder(PipeViewHolder holder, int position) {
+    public void onBindViewHolder(PipeViewHolder holder, int position){
 
         if (mPipe != null) {
             PipeSizeEntity current = mPipe.get(position);
@@ -63,7 +56,8 @@ public class PipeSizeAdapter extends RecyclerView.Adapter<PipeSizeAdapter.PipeVi
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), displaySchedTable.class);
-                String current = mPipe.get(position).toString();
+                PipeSizeEntity chosen = mPipe.get(position);
+                String current = chosen.getMNPSPipeSize();
                 intent.putExtra("NPSchosen",current);
                 view.getContext().startActivity(intent);
             }

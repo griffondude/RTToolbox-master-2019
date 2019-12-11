@@ -27,6 +27,8 @@ public abstract class PipeRoomDatabase extends RoomDatabase {
                             // Wipes and rebuilds instead of migrating if no Migration object.
                             // Migration is not part of this codelab.
                             .addCallback(sRoomDatabaseCallback)
+                            //TODO: Fix code main thread queries are not necessary.
+                            .allowMainThreadQueries()
                             .build();
 
                 }

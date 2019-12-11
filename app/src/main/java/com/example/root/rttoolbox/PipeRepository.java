@@ -19,6 +19,8 @@ public class PipeRepository {
 
     LiveData<List<PipeSizeEntity>> getAllPipes() {return mAllPipes;}
 
+    public PipeSizeEntity getmPipeSched(String s) {return mPipeDao.getPipeSched(s);}
+
     public void insert (PipeSizeEntity pipeSizeEntity) {
         new insertAsyncTask(mPipeDao).execute((Runnable) pipeSizeEntity);
     }

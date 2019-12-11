@@ -12,6 +12,7 @@ public class PipeViewModel extends AndroidViewModel {
     private PipeRepository mPipeRepository;
     private LiveData<List<PipeSizeEntity>> mAllPipes;
     private final PipeDao pipeDao;
+    String s;
 
     public PipeViewModel(@NonNull Application application) {
         super(application);
@@ -22,4 +23,9 @@ public class PipeViewModel extends AndroidViewModel {
     }
 
     LiveData<List<PipeSizeEntity>> getmAllPipes() {return pipeDao.getAllPipeSizes();}
+
+    public PipeSizeEntity getmPipeSched(String s) {return pipeDao.getPipeSched(s);}
 }
+
+
+
